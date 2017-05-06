@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JavierFernandez0517_Assignment
+namespace JavierFernandez0517_Assignment.Model
 {
-    public class Class1
+    public enum StockType
     {
+        COMMON, 
+        PREFERRED
     }
 }

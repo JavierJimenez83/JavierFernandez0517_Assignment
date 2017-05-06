@@ -12,7 +12,7 @@ namespace JavierFernandez0517_Assignment.Model
         private string stockSymbol = null;
         private StockType stockType = StockType.COMMON;
         private double lastDividend = 0.0;
-        private double fixedDividend = 0.0;
+        private double? fixedDividend = 0.0;
         private double parValue = 0.0;
 
         // Stock class getters-setters
@@ -25,8 +25,8 @@ namespace JavierFernandez0517_Assignment.Model
         public double GetLastDividend() { return lastDividend; }
         public void SetLastDividend(double value) { this.lastDividend = value; }
 
-        public double GetFixedDividend() { return fixedDividend; }
-        public void SetFixedDividend(double value) { this.fixedDividend = value; }
+        public double? GetFixedDividend() { return fixedDividend; }
+        public void SetFixedDividend(double? value) { this.fixedDividend = value; }
 
         public double GetParValue() { return parValue; }
         public void SetParValue(double value) { this.parValue = value; }
@@ -39,7 +39,7 @@ namespace JavierFernandez0517_Assignment.Model
         /// <param name="las">Last Dividend</param>
         /// <param name="fix">Fixed Dividend</param>
         /// <param name="par">Par Value</param>
-        public Stock(string sto, StockType typ, double las, double fix, double par)
+        public Stock(string sto, StockType typ, double las, double? fix, double par)
         {
             this.stockSymbol = sto;
             this.stockType = typ;
@@ -87,7 +87,7 @@ namespace JavierFernandez0517_Assignment.Model
                 return marketPrice / dividendYield ;
             }
             else
-            {
+            { 
                 return -1.0;
             }
         }

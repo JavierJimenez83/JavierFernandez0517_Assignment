@@ -53,13 +53,13 @@ namespace JavierFernandez0517_Assignment
         /// <summary>
         /// This method returns a Stock with a specific stock symbol
         /// </summary>
-        /// <param name="stockSymbol">Stock symbol</param>
+        /// <param name="stockSymbol">Stock symbol (to identify stock)</param>
         /// <returns>This returns a stock; it returns null if there is not a stock with such stock symbol</returns>
         public Stock getStockByStockSymbol(string stockSymbol)
         {
             try
             {
-                Stock stock = this.listStock.Find(x => x.GetStockSymbol() == stockSymbol);
+                Stock stock = this.GetListStock().Find(x => x.GetStockSymbol() == stockSymbol);
                 return stock;
             }
             catch
@@ -77,13 +77,52 @@ namespace JavierFernandez0517_Assignment
         {
             try
             {
-                this.listTrade.Add(trade);
+                this.GetListTrade().Add(trade);
                 return true;
             }
             catch
             {
                 return false;
             }
+        }
+        
+        /// <summary>
+        /// Get all the trade of a particular stock that have been traded in a given period
+        /// </summary>
+        /// <param name="stockSymbol">Stock symbol (to identify stock)</param>
+        /// <param name="periodMinutes">Given period (15 minutes from requirements, but this can be modified in GBCEMain class)</param>
+        /// <returns></returns>
+        public List<Trade> getListTradeInPeriod(string stockSymbol, int periodMinutes)
+        {
+            List<Trade> listTradeInPeriod = new List<Trade>();
+
+            foreach(Trade x in this.GetListTrade())
+            {
+                try
+                {
+                    // Geting stock symbol of that trade
+                    string tradeStockSymbol = x.GetStock().GetStockSymbol();
+                    bool isCorrectStock = tradeStockSymbol == stockSymbol ? true : false;
+
+                    // Comparing DateTime now to time trade happened
+                    DateTimeOffset timeNow = DateTimeOffset.Now;
+                    DateTimeOffset timeTrade = x.GetTimestamp();
+                    int minutes = timeNow.Subtract(timeTrade).Minutes;
+                    bool isWithinPeriod = minutes <= periodMinutes ? true : false;
+
+                    // Adding trade to list if: is correct stock AND has been traded in given period
+                    if (isCorrectStock && isWithinPeriod)
+                    {
+                        listTradeInPeriod.Add(x);
+                    }
+                }
+                catch
+                {
+
+                }                
+            }
+
+            return listTradeInPeriod;
         }
     }
 }

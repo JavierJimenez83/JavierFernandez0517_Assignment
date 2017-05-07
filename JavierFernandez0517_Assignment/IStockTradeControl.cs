@@ -24,7 +24,7 @@ namespace JavierFernandez0517_Assignment
         /// <summary>
         /// This method returns a Stock with a specific stock symbol
         /// </summary>
-        /// <param name="stockSymbol">Stock symbol</param>
+        /// <param name="stockSymbol">Stock symbol (to identify stock)</param>
         /// <returns>This returns a stock; it returns null if there is not a stock with such stock symbol</returns>
         public Stock getStockByStockSymbol(string stockSymbol);
 

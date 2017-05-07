@@ -34,18 +34,18 @@ namespace JavierFernandez0517_Assignment.Model
         /// <summary>
         /// This is the Stock class constructor
         /// </summary>
-        /// <param name="sto">Stock Symbol</param>
+        /// <param name="sto">Stock Symbol (to identify stock)</param>
         /// <param name="typ">Stock Type (Common or Preferred)</param>
         /// <param name="las">Last Dividend</param>
         /// <param name="fix">Fixed Dividend</param>
         /// <param name="par">Par Value</param>
         public Stock(string sto, StockType typ, double las, double? fix, double par)
         {
-            this.stockSymbol = sto;
-            this.stockType = typ;
-            this.lastDividend = las;
-            this.fixedDividend = fix;
-            this.parValue = par;
+            this.SetStockSymbol(sto);
+            this.SetStockType(typ);
+            this.SetLastDividend(las);
+            this.SetFixedDividend(fix);
+            this.SetParValue(par);
         }
 
         /// <summary>
@@ -53,14 +53,14 @@ namespace JavierFernandez0517_Assignment.Model
         /// </summary>
         /// <param name="marketPrice">Market price</param>
         /// <returns>This method returns the dividend yield; it returns -1.0 if and only if market price is less or equal than 0.0</returns>
-        public double DividendYield(double marketPrice)
+        public double getDividendYield(double marketPrice)
         {
             if (marketPrice > 0.0)
             {
                 // If Stock Type is COMMON
-                if(stockType == StockType.COMMON)
+                if(this.GetStockType() == StockType.COMMON)
                 {
-                    return lastDividend / marketPrice ;
+                    return this.GetLastDividend() / marketPrice ;
                 }
                 // If Stock Type is PREFERRED
                 else
@@ -69,8 +69,8 @@ namespace JavierFernandez0517_Assignment.Model
                     try
                     {
                         // Casting to double
-                        double fixDiv = (double)fixedDividend;
-                        return (fixDiv * parValue) / marketPrice;
+                        double fixDiv = (double)this.GetFixedDividend();
+                        return (fixDiv * this.GetParValue()) / marketPrice;
                     }
                     catch
                     {
@@ -89,11 +89,11 @@ namespace JavierFernandez0517_Assignment.Model
         /// </summary>
         /// <param name="marketPrice">Market price</param>
         /// <returns>This method returns the price-earnings ratio; it returns -1.0 if and only if market price is less or equal than 0.0</returns>
-        public double PriceEarningsRatio(double marketPrice)
+        public double getPriceEarningsRatio(double marketPrice)
         {
             if (marketPrice > 0.0)
             {
-                double dividendYield = DividendYield(marketPrice);
+                double dividendYield = getDividendYield(marketPrice);
                 return marketPrice / dividendYield ;
             }
             else

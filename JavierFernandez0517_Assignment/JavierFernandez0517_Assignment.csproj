@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GBCEMain.cs" />
     <Compile Include="IStockTradeControl.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\StockType.cs" />

@@ -40,11 +40,11 @@ namespace JavierFernandez0517_Assignment.Model
         /// <param name="pri">Trade price</param>
         public Trade(DateTimeOffset tim, long qua, TradeBuySell tbs, double pri, Stock sto)
         {
-            this.timestamp = tim;
-            this.quantityOfShares = qua;
-            this.buySellIndicator = tbs;
-            this.tradePrice = pri;
-            this.stock = sto;
+            this.SetTimestamp(tim);
+            this.SetQuantityOfShares(qua);
+            this.SetBuySellIndicator(tbs);
+            this.SetTradePrice(pri);
+            this.SetStock(sto);
         }
     }
 }

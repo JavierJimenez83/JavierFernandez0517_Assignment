@@ -27,5 +27,12 @@ namespace JavierFernandez0517_Assignment
         /// <param name="stockSymbol">Stock symbol</param>
         /// <returns>This returns a stock; it returns null if there is not a stock with such stock symbol</returns>
         public Stock getStockByStockSymbol(string stockSymbol);
+
+        /// <summary>
+        /// This method adds a trade to the list of trades (Global Beverage Corporation Exchange)
+        /// </summary>
+        /// <param name="trade">Trade</param>
+        /// <returns>It returns 'true' if the trade has been added successfully; it returns 'false' if the trade has not been added</returns>
+        public bool addTrade(Trade trade);
     }
 }

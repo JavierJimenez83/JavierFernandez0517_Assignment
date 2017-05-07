@@ -31,7 +31,7 @@ namespace JavierFernandez0517_Assignment
             listStock.Add(new Stock("TEA",  StockType.COMMON,    0.0,    null,   100.0));
             listStock.Add(new Stock("POP",  StockType.COMMON,    8.0,    null,   100.0));
             listStock.Add(new Stock("ALE",  StockType.COMMON,    23.0,   null,   100.0));
-            listStock.Add(new Stock("GIN",  StockType.PREFERRED, 8.0,    2.0,    100.0));
+            listStock.Add(new Stock("GIN",  StockType.PREFERRED, 8.0,    0.02,    100.0));
             listStock.Add(new Stock("JOE",  StockType.COMMON,    13.0,   null,   100.0));
             return listStock;
         }
@@ -68,5 +68,22 @@ namespace JavierFernandez0517_Assignment
             }
         }
 
+        /// <summary>
+        /// This method adds a trade to the list of trades (Global Beverage Corporation Exchange)
+        /// </summary>
+        /// <param name="trade">Trade</param>
+        /// <returns>It returns 'true' if the trade has been added successfully; it returns 'false' if the trade has not been added</returns>
+        public bool addTrade(Trade trade)
+        {
+            try
+            {
+                this.listTrade.Add(trade);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

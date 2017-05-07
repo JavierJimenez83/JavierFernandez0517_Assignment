@@ -65,7 +65,17 @@ namespace JavierFernandez0517_Assignment.Model
                 // If Stock Type is PREFERRED
                 else
                 {
-                    return (fixedDividend * parValue) / marketPrice;
+                    // fixedDividend is a nullable double; try and catch block throws an exception when fixedDividend is null
+                    try
+                    {
+                        // Casting to double
+                        double fixDiv = (double)fixedDividend;
+                        return (fixDiv * parValue) / marketPrice;
+                    }
+                    catch
+                    {
+                        return -1.0;
+                    }
                 }
             }
             else

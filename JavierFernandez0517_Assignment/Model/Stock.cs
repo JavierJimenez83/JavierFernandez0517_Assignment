@@ -88,16 +88,17 @@ namespace JavierFernandez0517_Assignment.Model
         /// This method calculates the price-earnings ratio for a specific Stock (both COMMON and PREFERRED, through the DividendYield method)
         /// </summary>
         /// <param name="marketPrice">Market price</param>
-        /// <returns>This method returns the price-earnings ratio; it returns -1.0 if and only if market price is less or equal than 0.0</returns>
+        /// <returns>This method returns the price-earnings ratio; it returns -1.0 if market price is less or equal than 0.0 and dividend yield is not equal to -1.0 </returns>
         public double getPriceEarningsRatio(double marketPrice)
         {
-            if (marketPrice > 0.0)
+            double dividendYield = getDividendYield(marketPrice);
+
+            if (marketPrice > 0.0 && dividendYield != -1.0)
             {
-                double dividendYield = getDividendYield(marketPrice);
-                return marketPrice / dividendYield ;
+                return marketPrice / dividendYield;
             }
             else
-            { 
+            {
                 return -1.0;
             }
         }

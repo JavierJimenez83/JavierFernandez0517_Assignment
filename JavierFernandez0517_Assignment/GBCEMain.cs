@@ -119,8 +119,24 @@ namespace JavierFernandez0517_Assignment
             catch
             {
                 return -1.0;
-            }
-            
+            }            
         }
-    }
+
+        /// <summary>
+        /// This method returns the Global Beverage Corporation Exchange All Share Index
+        /// </summary>
+        /// <returns>Global Beverage Corporation Exchange All Share Index</returns>
+        public double calculateAllShareIndex()
+        {
+            double GBCEAllIndex = 0.0;
+
+            // Get list of stocks
+            List<Stock> listStock = stockTradeControl.GetListStock();
+
+            //
+
+
+            return GBCEAllIndex;
+        }
+    }    
 }
